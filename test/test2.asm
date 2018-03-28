@@ -1,5 +1,8 @@
-/PDP-8 test2.asm
+/PDP-8 test2.asm key buffer test
 *200
+START,  CLA CLL
+        TAD BUFF
+        DCA BUFFPT
 INPUT,  KCC
         JMS LISN
         DCA HOLD
@@ -8,6 +11,9 @@ LISN,   0
         KSF
         JMP .-1
         KRB
+        TLS
+        DCA I BUFFPT
+        TAD I BUFFPT
         JMP I LISN
 OUTPUT, 0
         CLA CLL
@@ -22,3 +28,6 @@ TYPE,   0
         CLA CLL
         JMP I TYPE
 HOLD,   0
+BUFF,   2000
+BUFFPT, 0
+K215,   215

@@ -1,4 +1,4 @@
-/PDP-8 test1.asm test code input and output of a single character
+/PDP-8 test2.asm
 *200
 INPUT,  KCC
         JMS LISN

@@ -1,23 +1,44 @@
-/PDP-8 test3.asm just some midi data
+/PDP-8 test3.asm just some midi data as ascii to pars
 *200
-START,  AIX1=10
-        CLA CLL
+START,  CLA CLL
+        TLS
         TAD MDATA
         DCA AIX1
-PREP,   NOP
-        TAD I AIX1
-        SNA
-        JMP I [7600
+        TAD M6
+        DCA COUNT
+NEXT,   TAD I AIX1
         JMS TYPE
-        JMP PREP
+        ISZ COUNT
+        JMP NEXT
+        JMP I [7600
 TYPE,   0
-        TLS
         TSF
         JMP .-1
+        TLS
         CLA CLL
         JMP I TYPE
 MDATA,  .
-        220     /cmd
-        36      /pitch
-        105     /velocity
+        274     /<
+        271     /x90 cmd
+        260     /
+        241     /! 
+        262     /x24 pitch
+        264     /
+        241     /!
+        266     /x64 velocity
+        264     /
+        276     />
+        274     /<
+        270     /x80 cmd
+        260     /
+        241     /!
+        262     /x24 pitch
+        264     /
+        241     /!
+        260     /x00 velocity
+        260     /
+        276     />
         000
+M6,     -25
+COUNT,  0
+AIX1=10
